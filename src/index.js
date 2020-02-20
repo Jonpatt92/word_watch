@@ -1,9 +1,13 @@
 import $ from 'jquery'
-const wordService = require('wordService')
+var fetch = require('node-fetch')
+const { URLSearchParams } = require('url');
+const WORD_URL = "https://wordwatch-api.herokuapp.com/api/v1/top_word"
 
 $(document).ready(() => {
-  // have fun!
-})
+  fetch("https://wordwatch-api.herokuapp.com/api/v1/top_word")
+      .then(res => { return res.json() })
 
-let favWord = await wordService.getWord;
-console.log(favWord);
+  console.log("??????? FAVORITE WORD ???????");
+  var favWord = fetch(WORD_URL);
+  console.log(favWord);
+})
